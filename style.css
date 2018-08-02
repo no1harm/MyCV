@@ -1,8 +1,18 @@
 body {
     margin: 0;
+    background-color: #efefef;
 }
 a {
     text-decoration: none;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+hr {
+    height: 0;
+    border: noen;
+    border-top: 1px solid #dedede;
 }
 .clearfix::after {
 	content: '';
@@ -12,6 +22,14 @@ a {
 .topNavBar {
     padding-top: 20px;
     padding-bottom: 12px;
+    /* padding-left: 16px;
+    padding-right: 16px; */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.topNavBar-inner {
     padding-left: 16px;
     padding-right: 16px;
 }
@@ -58,4 +76,92 @@ a {
 }
 .topNavBar nav ul li a:hover {
     border-bottom: 3px solid #e06567;
+}
+.banner {
+    background-image: url(./img/rs-cover-01.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 512px;
+}
+.banner .mask {
+    height: 512px;
+    background: rgba(0,0,0,0.6)
+}
+.userCard {
+    max-width: 960px;
+    margin:0 auto;
+    background-color: #fff;
+}
+.userCard .welcome {
+    position: relative;
+    background-color: #e6686a;
+    color: #fff;
+    /* span不接受宽高设置，除非设置inline-block */
+    display: inline-block;  
+    padding: 4px 16px;
+    margin-bottom: 10px;
+}
+.userCard .welcome .triangle {
+    position: absolute;
+    display: block;
+    border: 10px solid transparent;
+    width: 0px;
+    border-left-color: #e6686a;
+    border-top-width: 0px;
+    left: 4px;
+    top: 100%;
+}
+.userCard .picture {
+    float: left;
+}
+.userCard .text {
+    float: left;
+    margin-left: 65px;
+    width: 470px;
+}
+.userCard .text h1{
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+.userCard .pictureAndText{
+    padding: 50px;
+}
+.userCard .text hr {
+    margin: 20px 0;
+}
+.userCard dl dt,
+.userCard dl dd{
+    padding: 5px 0;
+}
+.userCard dl dt{
+    float: left;
+    width: 30%;
+    font-weight: bold;
+}
+.userCard dl dd {
+    float: left;
+    width: 70%;
+    color: #9da0a7;
+}
+.userCard .media {
+    background-color: #e6686a;
+    text-align: center;
+}
+.userCard .media a {
+    display: inline-block;
+    width: 40px;
+    line-height: 30px;
+    padding: 5px 0;
+    border-radius: 50%;
+    margin: 16px;
+}
+.userCard .media a:hover{
+    background-color: #cf5d5f;
+}
+
+.userCard svg{
+    width: 30px;
+    height: 30px;
+    fill: white;
+    vertical-align: top;
 }
