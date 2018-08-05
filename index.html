@@ -81,36 +81,88 @@
                 </a>
             </footer>
         </div>
-        <a href="#" class="button">下载PDF简历</a>
-        <p>
+        <p class="downloadResume-wrapper" >
+            <a href="./resume.pdf" target="_blank" download class="downloadResume">下载PDF简历</a>
+        </p>
+        <p class="selfIntroduction">
             陈俊锟<br>
             前端开发工程师
         </p>
     </main>
-    <section>
+    <section class="skills">
         <h2>技能</h2>
-        <ol>
-            <li>HTML 5 &amp; CSS 3</li>
-            <li>JavaScript</li>
-            <li>jQuery</li>
-            <li>HTTP</li>
-            <li>Vue</li>
-            <li>React</li>
+        <ol class="clearfix">
+            <li>
+                <h3>HTML 5 &amp; CSS 3</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 95%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 95%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar" >
+                    <div class="progress" style="width: 90%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Vue.js</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 84%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTTP</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 80%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>React</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 70%"></div>
+                </div>
+            </li>
         </ol>
     </section>
-    <section>
+    <section class="portfolio">
         <h2>作品集</h2>
         <nav>
-            <ol>
-                <li>所有</li>
-                <li>框架</li>
-                <li>原生JS &amp;CSS</li>
-            </ol>
+            <ol class="clearfix">
+                <li id="portfolioAll">所有</li>
+                <li id="portfolioFramework">框架</li>
+                <li id="portfolioVallina">原生JS &amp;CSS</li>
+            </ol> 
+            <div id="portfolioBar" class="bar state-1">
+                <div class="bar-inner"></div>
+            </div>
         </nav> 
-        <div class="jobs">
-            <div class="big"></div>
-            <div class="small"></div>
-            <div class="small"></div>
+        <script>
+            portfolioAll.onclick= function(){
+                portfolioBar.className = 'bar state-1'
+            }
+            portfolioFramework.onclick= function(){
+                portfolioBar.className = 'bar state-2'
+            }
+            portfolioVallina.onclick= function(){
+                portfolioBar.className = 'bar state-3'
+            }
+        </script>
+        <div class="works">
+            <div class="big">
+                <img src="./img/1-01.jpg" alt="作品1" width="640px" height="597px">
+            </div>
+            <div class="small" style="top: 0;left: 665px;">
+                <img src="./img/2-01.jpg" alt="作品2"width="293px" height="285px">
+            </div>
+            <div class="small" style="top: 310px;left: 665px;">
+                <img src="./img/3-01.jpg" alt="作品3"width="293px" height="285px">
+            </div>
         </div>       
     </section>
 </body>
