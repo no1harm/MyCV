@@ -27,10 +27,10 @@
                 </a>
                 <nav class="menu">
                     <ul class="clearfix">
-                        <li><a href="#">关于</a></li>
-                        <li><a href="#">技能</a></li>
+                        <li><a href="#siteAbout">关于</a></li>
+                        <li><a href="#siteSkills">技能</a></li>
                         <li>
-                            <a  href="#">作品</a>
+                            <a  href="#siteWork">作品</a>
                             <ul class="subMenu">
                                 <li>作品1</li>
                                 <li>作品2</li>
@@ -55,7 +55,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="userCard">
+        <div class="userCard" id="siteAbout">
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img src="./img/avatar.jpg"  width="299px" height="347px" alt="头像">
@@ -105,7 +105,7 @@
             前端开发工程师
         </p>
     </main>
-    <section class="skills">
+    <section class="skills" id="siteSkills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -146,7 +146,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio">
+    <section class="portfolio" id="siteWork">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -215,6 +215,22 @@
                 // let brother = li.getElementsByTagName('ul')[0]
                 // brother.classList.remove('active')
                 x.currentTarget.classList.remove('active')
+            }
+        }
+        let aTags = document.querySelectorAll('nav.menu ul li a')
+        for(let i = 0;i<aTags.length;i++){
+            aTags[i].onclick = function(x) {
+                // 阻止点击的默认动作，因为a标签点击之后会自动刷新网页
+                x.preventDefault()
+                let a = x.currentTarget
+                // 下面这句是不带任何处理的
+                // a.getAttribute('href')
+                // a.href是带http协议的，是经过浏览器处理的
+                // console.log(a.href)
+                let href = a.getAttribute('href')   //'#siteWork'
+                let element = document.querySelector(href)
+                let top = element.offsetTop
+                window.scrollTo(0,top-80) 
             }
         }
     </script>
