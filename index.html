@@ -25,12 +25,25 @@
             <a href="#" class="logo" alt="logo" style="float: left;">
                     <span class="rs">RS</span><span class="card">card</span>
                 </a>
-                <nav>
+                <nav class="menu">
                     <ul class="clearfix">
                         <li><a href="#">关于</a></li>
                         <li><a href="#">技能</a></li>
-                        <li><a href="#">作品</a></li>
-                        <li><a href="#">博客</a></li>
+                        <li>
+                            <a  href="#">作品</a>
+                            <ul class="subMenu">
+                                <li>作品1</li>
+                                <li>作品2</li>
+                                <li>作品3</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a  href="#">博客</a>
+                            <ul class="subMenu">
+                                <li>博客1</li>
+                                <li>博客2</li>
+                            </ul>
+                        </li>
                         <li><a href="#">日历</a></li>
                         <li><a href="#">联系方式</a></li>
                         <li><a href="#">其他</a></li>
@@ -171,12 +184,37 @@
     <script>
         setTimeout(function(){
             siteWelcome.classList.remove('active')
-        },2000)
+        },1500)
         window.onscroll = function(){
             if(window.scrollY > 0 ){
                 toNavBar.classList.add('sticky')
             } else {
                 toNavBar.classList.remove('sticky')
+            }
+        }
+        let liTags = document.querySelectorAll('nav.menu ul li')
+        for (let i = 0;i < liTags.length;i++) {
+            liTags[i].onmouseenter = function(x){
+                // 获取a节点
+            //     let li = x.currentTarget
+            //     // 获取a节点的兄弟节点
+            //     let brother = li.getElementsByTagName('ul')[0]
+            //     // 因为兄弟节点之间可能存在有空格，所以需要递归寻找不是文本内容的节点
+            //     // while(brother.nodeType === 3){
+            //     //     brother = brother.nextSibling
+            //     // }
+            //     // 也可以：使用循环寻找到TagName为指定名称的节点为止（一定要大写）
+            //     // while(brother.tagName !== 'UL'){
+            //     //     brother = brother.nextSibling
+            //     // }
+            //     brother.classList.add('active')
+            x.currentTarget.classList.add('active')
+            }
+            liTags[i].onmouseleave = function(x) {
+                // let li = x.currentTarget
+                // let brother = li.getElementsByTagName('ul')[0]
+                // brother.classList.remove('active')
+                x.currentTarget.classList.remove('active')
             }
         }
     </script>
