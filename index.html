@@ -17,6 +17,9 @@
     </style>
 </head>
 <body>
+    <div id="siteWelcome" class="site-welcome active">
+        <div class="loading"></div>
+    </div>
     <div class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a href="#" class="logo" alt="logo" style="float: left;">
@@ -165,5 +168,8 @@
             </div>
         </div>       
     </section>
+    <script>
+        siteWelcome.classList.remove('active')
+    </script>
 </body>
 </html>
