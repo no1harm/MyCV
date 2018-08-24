@@ -311,12 +311,20 @@ section.skills ol .progressBar {
     background-color: #fae1e1;
     border-radius: 2px;
     margin: 4px 0 40px 0;
+    /* 加上overflow，动画时不溢出
+    overflow 属性规定当内容溢出元素框时发生的事情。 */
+    overflow: hidden;
 }
 section.skills ol .progressBar .progress {
     height: 100%;
     background-color: #e6686a;
     border-radius: 2px;
     width: 50%;
+    transform: translateX(0);
+    transition: all 1s;
+}
+section.skills.offset ol .progressBar .progress {
+    transform: translateX(-100%)
 }
 section.portfolio {
     text-align: center;
