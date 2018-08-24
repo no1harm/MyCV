@@ -55,7 +55,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="userCard" id="siteAbout">
+        <div class="userCard" id="siteAbout" data-x>
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img src="./img/avatar.jpg"  width="299px" height="347px" alt="头像">
@@ -105,7 +105,7 @@
             前端开发工程师
         </p>
     </main>
-    <section class="skills" id="siteSkills">
+    <section class="skills" id="siteSkills" data-x>
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -146,7 +146,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio" id="siteWork">
+    <section class="portfolio" id="siteWork" data-x>
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -185,13 +185,43 @@
     <script>
         setTimeout(function(){
             siteWelcome.classList.remove('active')
-        },1500)
+        },100)
+
+        // 添加offset类
+        let specialTags = document.querySelectorAll('[data-x]')  //获取含有data-x属性的节点
+
+        for(let i = 1;i < specialTags.length;i++){
+            specialTags[i].classList.add('offset')
+        }
+        setTimeout(function(){
+            autoHightLight()
+        },100)
         window.onscroll = function(){
             if(window.scrollY > 0 ){
                 toNavBar.classList.add('sticky')
             } else {
                 toNavBar.classList.remove('sticky')
             }
+            autoHightLight()
+        }
+        function autoHightLight(){
+            let specialTags = document.querySelectorAll('[data-x]')  //获取含有data-x属性的节点
+            let minIndex = 0
+            // 找到所有含有data-x属性的节点中离页面顶端距离最小的那一个
+            for(let i = 1;i < specialTags.length;i++){
+                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
+                    minIndex = i
+                }
+            }
+            specialTags[minIndex].classList.remove('offset')
+            let id = specialTags[minIndex].id
+            let a = document.querySelector('a[href="#'+id+'"]')
+            let li = a.parentNode
+            let brotherAndMe = li.parentNode.children
+            for(let i = 0;i<brotherAndMe.length;i++){
+                brotherAndMe[i].classList.remove('highlight')
+            }
+            li.classList.add('highlight')
         }
         let liTags = document.querySelectorAll('nav.menu ul li')
         for (let i = 0;i < liTags.length;i++) {

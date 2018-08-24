@@ -25,6 +25,13 @@ h1,h2,h3,h4,h5,h6{
 	display: block;
 	clear: both;
 }
+[data-x].offset {
+    transform: translateY(100px)
+}
+[data-x] {
+    transform: translateY(0);
+    transition: all 0.5s
+}
 /* 导航栏 */
 .topNavBar {
     padding-top: 20px;
@@ -93,7 +100,8 @@ h1,h2,h3,h4,h5,h6{
     display: block;
     position: relative;
 }
-.topNavBar nav ul li.active a::after {
+.topNavBar nav ul li.active a::after,
+.topNavBar nav ul li.highlight a::after {
     content: '';
     display: block;
     position: absolute;
