@@ -150,23 +150,28 @@
     <section class="portfolio" id="siteWork" data-x>
         <h2>作品集</h2>
         
+
+
         <!-- 作品集轮播 -->
+        <!-- 这就是MVC中的V(View) -->
         <!-- Slider main container -->
-        <div class="swiper-container">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <img src="./img/works/canvas.jpg" class="swiper-slide">
-                <img src="./img/works/keyboard.png" class="swiper-slide">
-                <img src="./img/works/slides.png" class="swiper-slide">
+        <div id="mySlides">
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <img src="./img/works/canvas.jpg" class="swiper-slide">
+                    <img src="./img/works/keyboard.png" class="swiper-slide">
+                    <img src="./img/works/slides.png" class="swiper-slide">
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            
             </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
-        
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
