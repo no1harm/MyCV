@@ -273,7 +273,7 @@ body main .downloadResume:hover{
 
 section.skills,
 section.portfolio {
-    max-width: 960px;
+    max-width: 750px;
     margin:0 auto;
     margin-top: 60px;
 
@@ -336,66 +336,13 @@ section.portfolio h2 {
     font-size: 34px;
     line-height: 1.2;
     font-weight: 600;
-}
-section.portfolio nav {
-    margin-top: 30px;
     margin-bottom: 30px;
-    text-align: center;
-    display: inline-block;
-    vertical-align: top;
-}
-section.portfolio nav ol {
-    /* border: 1px solid red; */
-    display: inline-block;
-    vertical-align: top;
-    /* margin: 0 auto; */
-}
-section.portfolio nav ol li {
-    float: left;
-    margin-left: 40px;
-    cursor: pointer;
-}
-section.portfolio nav ol li:nth-child(1){
-    margin-left: 0;
-}
-section.portfolio nav .bar {
-    height: 5px;
-    background: white;
-    margin-top: 6px;
-    border-radius: 2px;
-}
-section.portfolio nav .bar-inner {
-    height: 100%;
-    background: #e6686a;
-    width: 50px;
-    border-radius: 2px;
-    transition: all 0.3s;
-}
-section.portfolio nav .bar.state-1 .bar-inner {
-    margin-left: 0;
-    width: 50px;
-}
-section.portfolio nav .bar.state-2 .bar-inner {
-    margin-left: 65px;
-    width: 50px;
-}
-section.portfolio nav .bar.state-3 .bar-inner {
-    margin-left: 140px;
-    width: 100px;
 }
 
 section.portfolio .works {
     position: relative;
     /* border: 1px solid red; */
     height: 597px;
-}
-section.portfolio .works .big,
-section.portfolio .works .small {
-    position: absolute;
-}
-section.portfolio .works .big {
-    top: 0;
-    left: 0;
 }
 
 .loading {
@@ -447,4 +394,27 @@ section.portfolio .works .big {
 }
 .site-welcome.active {
     display: flex;
+}
+
+/* swiper轮播 */
+.swiper-container {
+    width: 668px;
+    height: 501px;
+}
+.swiper-slide {
+    background-color: #fff;
+}
+section.portfolio .swiper-button-prev,
+section.portfolio .swiper-button-next {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 66px;
+    height: 66px;
+    left: auto;
+    right: 100%;
+    top:54%;
+}
+section.portfolio .swiper-button-next {
+    left: 100%;
+    right: auto;
 }
