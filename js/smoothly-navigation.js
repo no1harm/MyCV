@@ -1,5 +1,6 @@
-     // tweenjs动画
-     function animate(time) {
+!function(){
+      // tweenjs动画
+      function animate(time) {
         requestAnimationFrame(animate);
         TWEEN.update(time);
     }
@@ -54,3 +55,4 @@
             */
         }
     }
+}.call()  
