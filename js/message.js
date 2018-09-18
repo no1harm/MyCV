@@ -1,10 +1,72 @@
+!function(){
+    var view = $('section.messages')
+
+    var controller = {
+        view : null,
+        init : function(view){
+            this.view = view
+            this.myForm = document.querySelector('#postMessage')
+            this.initAV()
+            this.loadMessages()
+            this.bindEvents()
+        },
+        initAV : function(){
+            var APP_ID = 'WeRm0B5ispQM0SvP8o3F90yU-gzGzoHsz'
+            var APP_KEY = '9IHzsUJNVLPyH5U4lvLx2Huy'
+            AV.init({appId: APP_ID,appKey: APP_KEY})
+        },
+        loadMessages : function () {
+            var query = new AV.Query('Message');
+            query.find().then(function (messages) {
+                messages.forEach(function (item) {
+                    let li = $('<li></li>').text(item.attributes.name + ':' + item.attributes.content)
+                    $('#comments').append(li)
+                });
+            }).then(function (messages) {
+                // 更新成功
+            }, function (error) {
+                // 异常处理
+            });
+        },
+        bindEvents : function(){
+            this.myForm.addEventListener('submit',(e) => {
+                // 阻止传播，防止点击刷新
+                e.preventDefault()
+
+                this.saveMessages()
+            })
+        },
+        saveMessages : function(){
+            //获取输入框内的值
+            let content = $('input[name="content"]').val()
+            let name = $('input[name="name"]').val()
+            var Message = AV.Object.extend('Message')
+            var messages = new Message();
+            messages.save({
+                "name":name,
+                "content":content ,
+            }).then(function(object) {
+                let li = $('<li></li>').text(object.attributes.name +':'+ object.attributes.content)
+                $('#comments').append(li)
+                console.log(1)
+                this.myForm.querySelector('input[name="content"]').value = ''
+                console.log(2)
+            },function(error){
+                console.log(error)
+            })
+        },
+    }
+    controller.init(view) 
+}.call()
+
+/* 
 // 初始化
 var APP_ID = 'WeRm0B5ispQM0SvP8o3F90yU-gzGzoHsz';
 var APP_KEY = '9IHzsUJNVLPyH5U4lvLx2Huy';
 
 AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
+appId: APP_ID,
+appKey: APP_KEY
 });
 
 // 拉取历史留言
@@ -34,15 +96,13 @@ myForm.addEventListener('submit',function(e){
     messages.save({
         "name":name,
         "content":content ,
-      }).then(function(object) {
+    }).then(function(object) {
         let li = $('<li></li>').text(object.attributes.name +':'+ object.attributes.content)
         $('#comments').append(li)
         console.log(1)
         myForm.querySelector('input[name="content"]').value = ''
-      }) 
-})
-
-
+    }) 
+}) */
 /* 
 // 创建一个TestObject的表
 var TestObject = AV.Object.extend('TestObject');
@@ -52,8 +112,8 @@ var testObject = new TestObject();
 
 // 存储信息
 testObject.save({
-  words: 'Hello World!'
+words: 'Hello World!'
 }).then(function(object) {
-  alert('LeanCloud Rocks!');
+alert('LeanCloud Rocks!');
 })
- */
+*/
