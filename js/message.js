@@ -1,23 +1,42 @@
 !function(){
     var view = $('section.messages')
 
-    var controller = {
-        view : null,
-        init : function(view){
-            this.view = view
-            this.myForm = document.querySelector('#postMessage')
-            this.initAV()
-            this.loadMessages()
-            this.bindEvents()
-        },
-        initAV : function(){
+    var model = {
+        init : function(){
             var APP_ID = 'WeRm0B5ispQM0SvP8o3F90yU-gzGzoHsz'
             var APP_KEY = '9IHzsUJNVLPyH5U4lvLx2Huy'
             AV.init({appId: APP_ID,appKey: APP_KEY})
         },
-        loadMessages : function () {
+        //获取数据
+        fetch:function(){
             var query = new AV.Query('Message');
-            query.find().then(function (messages) {
+            return query.find() //Promise对象
+        },
+
+        // 保存数据
+        save:function(name,content){
+            var Message = AV.Object.extend('Message')
+            var messages = new Message();
+            return messages.save({
+                "name":name,
+                "content":content ,
+            })
+        },
+    }
+
+    var controller = {
+        view : null,
+        model: null,
+        init : function(view,model){
+            this.model = model
+            this.view = view
+            this.myForm = document.querySelector('#postMessage')
+            this.model.init()
+            this.loadMessages()
+            this.bindEvents()
+        },
+        loadMessages : function () {
+            this.model.fetch().then(function (messages) {
                 messages.forEach(function (item) {
                     let li = $('<li></li>').text(item.attributes.name + ':' + item.attributes.content)
                     $('#comments').append(li)
@@ -40,23 +59,16 @@
             //获取输入框内的值
             let content = $('input[name="content"]').val()
             let name = $('input[name="name"]').val()
-            var Message = AV.Object.extend('Message')
-            var messages = new Message();
-            messages.save({
-                "name":name,
-                "content":content ,
-            }).then(function(object) {
+            this.model.save(name,content).then(function(object) {
                 let li = $('<li></li>').text(object.attributes.name +':'+ object.attributes.content)
                 $('#comments').append(li)
-                console.log(1)
-                this.myForm.querySelector('input[name="content"]').value = ''
-                console.log(2)
+                document.querySelector('#postMessage input[name="content').value = ''
             },function(error){
                 console.log(error)
             })
         },
     }
-    controller.init(view) 
+    controller.init(view,model) 
 }.call()
 
 /* 
