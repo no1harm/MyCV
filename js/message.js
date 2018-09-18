@@ -38,7 +38,9 @@
         loadMessages : function () {
             this.model.fetch().then(function (messages) {
                 messages.forEach(function (item) {
+                    let span = $('<span></span>').text('留言发布于：'+ parseTime(object.createdAt))[0]
                     let li = $('<li></li>').text(item.attributes.name + ':' + item.attributes.content)
+                    li.append(span)
                     $('#comments').append(li)
                 });
             }).then(function (messages) {
@@ -60,7 +62,14 @@
             let content = $('input[name="content"]').val()
             let name = $('input[name="name"]').val()
             this.model.save(name,content).then(function(object) {
+                function parseTime(d){
+                    const newDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' '
+                                    + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+                    return newDate;
+                }
+                let span = $('<span></span>').text('留言发布于：'+ parseTime(object.createdAt))[0]
                 let li = $('<li></li>').text(object.attributes.name +':'+ object.attributes.content)
+                li.append(span)
                 $('#comments').append(li)
                 document.querySelector('#postMessage input[name="content').value = ''
             },function(error){

@@ -288,6 +288,9 @@ section.messages ol li {
     padding: 16px;
     border-bottom: 1px solid #ddd;
 }
+section.messages ol li span{
+    float: right;
+}
 section.messages h2,
 section.skills h2 {
     text-align: center;
