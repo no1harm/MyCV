@@ -278,6 +278,17 @@ section.portfolio {
     margin-top: 60px;
 
 }
+section.messages ol{
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 24px;
+    border-top: 1px solid #ddd;
+}
+section.messages ol li {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+section.messages h2,
 section.skills h2 {
     text-align: center;
     color: #3d4451;
@@ -328,7 +339,7 @@ section.skills.offset ol .progressBar .progress {
 }
 section.portfolio {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 section.portfolio h2 {
     text-align: center;
@@ -341,7 +352,7 @@ section.portfolio h2 {
 
 section.portfolio .works {
     position: relative;
-    /* border: 1px solid red; */
+    /* border: 1px solid #ddd; */
     height: 597px;
 }
 

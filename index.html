@@ -149,32 +149,49 @@
     </section>
     <section class="portfolio" id="siteWork" data-x>
         <h2>作品集</h2>
-        
         <!-- 作品集轮播 -->
+        <!-- 这就是MVC中的V(View) -->
         <!-- Slider main container -->
-        <div class="swiper-container">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <img src="./img/works/canvas.jpg" class="swiper-slide">
-                <img src="./img/works/keyboard.png" class="swiper-slide">
-                <img src="./img/works/slides.png" class="swiper-slide">
+        <div id="mySlides">
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <img src="./img/works/canvas.jpg" class="swiper-slide">
+                    <img src="./img/works/keyboard.png" class="swiper-slide">
+                    <img src="./img/works/slides.png" class="swiper-slide">
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            
             </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
-        
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
     </section>
+    <section class="messages">
+        <h2>留言</h2>
+        <ol id="comments"></ol>
+        <form action="" method="post" id="postMessage" style="width: 700px;margin: 50px auto;">
+            <label for="">姓名：</label>
+            <input type="text" name="name" id="">
+            <label for="">内容：</label>
+            <input type="text" name="content" id="">
+            <input type="submit" value="提交">
+        </form>
+    </section>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.10.0/dist/av-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- 模块化 -->
     <script src="./js/loading-animate.js"></script>
     <script src="./js/init-Swiper.js"></script>
     <script src="./js/sticky-topBar.js"></script>
     <script src="./js/auto-slide-up.js"></script>
     <script src="./js/smoothly-navigation.js"></script>
+    <script src="./js/message.js"></script>
 </body>
 </html>
