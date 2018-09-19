@@ -1,5 +1,5 @@
 !function(){
-    var view = $('section.messages')
+    var view = View('section.messages')
 
     var model = {
         init : function(){

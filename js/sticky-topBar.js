@@ -1,6 +1,6 @@
 !function(){
     
-    var view = document.querySelector('#toNavBar')
+    var view = View('#toNavBar')
 
     var controller = {
         view:null,
