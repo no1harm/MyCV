@@ -36,14 +36,9 @@
             this.bindEvents()
         },
         loadMessages : function () {
-            this.model.fetch().then(function (messages) {
-                messages.forEach(function (item) {
-                    function parseTime(d){
-                        const newDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' '
-                                        + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-                        return newDate;
-                    }
-                    let span = $('<span></span>').text('发布于：'+ parseTime(item.createdAt))[0]
+            this.model.fetch().then((messages) => {
+                messages.forEach((item) => {               
+                    let span = $('<span></span>').text('发布于：'+ this.parseTime(item.createdAt))[0]
                     let li = $('<li></li>').text(item.attributes.name + ':' + item.attributes.content)
                     li.append(span)
                     $('#comments').append(li)
@@ -66,13 +61,8 @@
             //获取输入框内的值
             let content = $('input[name="content"]').val()
             let name = $('input[name="name"]').val()
-            this.model.save(name,content).then(function(object) {
-                function parseTime(d){
-                    const newDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' '
-                                    + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-                    return newDate;
-                }
-                let span = $('<span></span>').text('发布于：'+ parseTime(object.createdAt))[0]
+            this.model.save(name,content).then((object) => {
+                let span = $('<span></span>').text('发布于：'+ this.parseTime(object.createdAt))[0]
                 let li = $('<li></li>').text(object.attributes.name +':'+ object.attributes.content)
                 li.append(span)
                 $('#comments').append(li)
@@ -81,6 +71,11 @@
                 console.log(error)
             })
         },
+        parseTime:function(d){
+            const newDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' '
+                            + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+            return newDate;
+        }
     }
     controller.init(view,model) 
 }.call()

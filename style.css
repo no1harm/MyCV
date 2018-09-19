@@ -290,6 +290,9 @@ section.messages ol li {
 }
 section.messages ol li span{
     float: right;
+    font-size: 12px;
+    color: #333333;
+    line-height: 21px;
 }
 section.messages h2,
 section.skills h2 {
