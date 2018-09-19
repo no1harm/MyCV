@@ -1,13 +1,15 @@
 !function(){
-      // tweenjs动画
-      function animate(time) {
+    var view = document.querySelector('nav.menu')
+    
+    // tweenjs动画
+    function animate(time) {
         requestAnimationFrame(animate);
         TWEEN.update(time);
     }
     
     requestAnimationFrame(animate); 
 
-    let aTags = document.querySelectorAll('nav.menu ul li a')
+    let aTags = view.querySelectorAll('nav.menu ul li a')
     for(let i = 0;i<aTags.length;i++){
         aTags[i].onclick = function(x) {
             // 阻止点击的默认动作，因为a标签点击之后会自动刷新网页
@@ -37,22 +39,6 @@
                     window.scrollTo(0,coords.y)
                 })
                 .start();
-            
-            // 使用setInterval创建动画
-            /*
-            let n = 25  //移动多少次
-            let duration = 500 / n    //每次移动多长时间
-            let distance = (targetTop - currentTop) / n   //每次滚动的距离
-            let i = 0
-            let id = setInterval( () => {
-                if (i===n) {
-                        window.clearInterval(id)    //停止滚动
-                        return
-                }
-                i = i + 1
-                window.scrollTo(0,currentTop + distance * i)    //每一次移动多少距离
-            },duration)
-            */
         }
     }
 }.call()  

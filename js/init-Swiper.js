@@ -1,5 +1,7 @@
 !function () {
-    var mySwiper = new Swiper('.swiper-container', {
+    var view = document.querySelector('#mySlides')
+    
+    var mySwiper = new Swiper(view.querySelector('.swiper-container'), {
         // Optional parameters
         loop: true,
 

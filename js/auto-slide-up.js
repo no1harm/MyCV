@@ -1,4 +1,5 @@
 !function () {
+    
     let specialTags = document.querySelectorAll('[data-x]')  //获取含有data-x属性的节点
 
     for (let i = 0; i < specialTags.length; i++) {
@@ -55,5 +56,4 @@
             x.currentTarget.classList.remove('active')
         }
     }
-
 }.call()
