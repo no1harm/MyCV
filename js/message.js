@@ -1,28 +1,7 @@
 !function(){
     var view = View('section.messages')
 
-    var model = {
-        init : function(){
-            var APP_ID = 'WeRm0B5ispQM0SvP8o3F90yU-gzGzoHsz'
-            var APP_KEY = '9IHzsUJNVLPyH5U4lvLx2Huy'
-            AV.init({appId: APP_ID,appKey: APP_KEY})
-        },
-        //获取数据
-        fetch:function(){
-            var query = new AV.Query('Message');
-            return query.find() //Promise对象
-        },
-
-        // 保存数据
-        save:function(name,content){
-            var Message = AV.Object.extend('Message')
-            var messages = new Message();
-            return messages.save({
-                "name":name,
-                "content":content ,
-            })
-        },
-    }
+    var model = Model({resourceName:'Message'})
 
     var controller = {
         view : null,
@@ -61,7 +40,7 @@
             //获取输入框内的值
             let content = $('input[name="content"]').val()
             let name = $('input[name="name"]').val()
-            this.model.save(name,content).then((object) => {
+            this.model.save({"name":name,"content":content}).then((object) => {
                 let span = $('<span></span>').text('发布于：'+ this.parseTime(object.createdAt))[0]
                 let li = $('<li></li>').text(object.attributes.name +':'+ object.attributes.content)
                 li.append(span)
